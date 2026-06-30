@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>경기도 청년 복지포인트 | 1년간 최대 120만원 지급</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --bg:#f5f6f8;
+    --surface:#ffffff;
+    --line:#e8eaed;
+    --line-soft:#f0f1f3;
+    --text:#1a1d23;
+    --text-sub:#5b616b;
+    --text-mute:#8b919c;
+    --blue:#2563eb;
+    --blue-soft:#eef3ff;
+    --coral:#ff5a7a;
+    --coral-deep:#ff3d63;
+    --orange:#ff6a3d;
+    --pink-1:#ffe3ec;
+    --pink-2:#ffeef3;
+    --green:#16a34a;
+    --radius:18px;
+    --radius-lg:24px;
+    --shadow:0 4px 20px rgba(30,35,45,.06);
+    --shadow-hover:0 8px 30px rgba(30,35,45,.10);
+    --ig:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Pretendard',-apple-system,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    letter-spacing:-.01em;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px;}
+  section{margin:clamp(40px,7vw,72px) 0;}
+
+  /* ===== Section title ===== */
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:clamp(18px,3vw,28px);}
+  .sec-head .dot{width:9px;height:9px;border-radius:50%;background:var(--blue);flex:none;}
+  .sec-head h2{font-size:clamp(20px,4vw,28px);font-weight:800;line-height:1.3;}
+  .sec-sub{color:var(--text-sub);font-size:clamp(14px,2.6vw,16px);margin-top:-10px;margin-bottom:22px;padding-left:19px;}
+  .accent-blue{color:var(--blue);}
+  .accent-orange{color:var(--orange);}
+
+  /* ===== Instagram band ===== */
+  .ig-band{
+    background:linear-gradient(105deg,#f3973f 0%,#ec6f5e 52%,#df5478 100%);
+    border-radius:22px;
+    padding:clamp(22px,4vw,30px) clamp(22px,4.5vw,40px);
+    display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+    box-shadow:0 10px 28px rgba(223,84,120,.24);
+  }
+  .ig-band .txt small{display:block;color:rgba(255,255,255,.9);font-weight:600;font-size:clamp(13px,2.6vw,15px);margin-bottom:7px;}
+  .ig-band .txt p{color:#fff;font-weight:800;font-size:clamp(18px,3.7vw,25px);line-height:1.3;text-shadow:0 1px 3px rgba(0,0,0,.08);}
+  .ig-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.18);color:#fff;font-weight:800;
+    padding:14px 26px;border-radius:999px;
+    font-size:clamp(15px,3vw,18px);
+    min-height:54px;text-decoration:none;white-space:nowrap;flex:none;
+    border:1.5px solid rgba(255,255,255,.6);
+    transition:transform .15s ease,background .15s ease;
+  }
+  .ig-btn:hover{background:rgba(255,255,255,.28);}
+  .ig-btn:active{transform:scale(.97);}
+  .ig-btn svg{width:24px;height:24px;flex:none;stroke:#fff;}
+  @media(min-width:720px){
+    .ig-band{flex-direction:row;align-items:center;justify-content:space-between;gap:24px;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:linear-gradient(150deg,#fdf4f6 0%,#faecf0 100%);
+    border:1px solid #f3e1e7;
+    border-radius:var(--radius-lg);
+    padding:clamp(28px,6vw,52px) clamp(22px,5vw,46px);
+    margin-top:24px;
+    position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .hero .label{display:inline-block;font-weight:700;color:#d8466a;font-size:clamp(15px,3vw,20px);margin-bottom:8px;}
+  .hero h1{font-size:clamp(26px,6.4vw,46px);font-weight:900;line-height:1.22;margin-bottom:22px;}
+  .hero h1 .big{color:var(--coral-deep);}
+  .hero ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px;}
+  .hero li{position:relative;padding-left:24px;font-size:clamp(14px,2.9vw,17px);color:#3a3e46;font-weight:500;}
+  .hero li::before{content:"";position:absolute;left:4px;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--coral-deep);}
+  .hero li small{display:block;color:#6b7079;font-weight:400;font-size:.9em;margin-top:2px;}
+  .hero .cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#fff;color:#d23a5e;font-weight:800;
+    padding:15px 34px;border-radius:999px;font-size:clamp(15px,3vw,17px);
+    min-height:54px;text-decoration:none;box-shadow:0 6px 18px rgba(210,58,94,.18);
+    transition:transform .15s ease;
+  }
+  .hero .cta:active{transform:scale(.97);}
+
+  /* ===== Card grid ===== */
+  .grid{display:grid;gap:16px;grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-2{grid-template-columns:1fr;}
+  .card{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:clamp(20px,4vw,28px);
+    box-shadow:var(--shadow);
+  }
+  .card .ic{
+    width:56px;height:56px;border-radius:50%;background:#f4f5f7;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  }
+  .card .ic svg{width:28px;height:28px;stroke:#3a3e46;}
+  .card.center{text-align:center;}
+  .card h3{font-size:clamp(16px,3.2vw,19px);font-weight:800;margin-bottom:8px;}
+  .card p{color:var(--text-sub);font-size:clamp(13.5px,2.7vw,15.5px);}
+  .card .note{color:var(--coral-deep);font-weight:600;font-size:.92em;margin-top:6px;display:block;}
+
+  /* feature card (icon left) */
+  .fcard{display:flex;gap:16px;align-items:flex-start;}
+  .fcard .ic{margin:0;flex:none;}
+  .fcard .body h3{margin-bottom:6px;}
+
+  /* ===== Intro block ===== */
+  .intro{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(24px,5vw,40px);box-shadow:var(--shadow);
+  }
+  .intro h2{font-size:clamp(21px,4.4vw,30px);font-weight:900;line-height:1.3;margin-bottom:18px;}
+  .intro h2 .accent-blue{color:var(--blue);}
+  .intro p{color:var(--text-sub);font-size:clamp(14px,2.8vw,16px);margin-bottom:14px;}
+  .intro p strong{color:var(--text);font-weight:700;}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px;}
+  .stat{background:var(--blue-soft);border-radius:14px;padding:18px 16px;text-align:center;}
+  .stat .num{font-size:clamp(20px,4.4vw,30px);font-weight:900;color:var(--blue);line-height:1.2;}
+  .stat .desc{font-size:clamp(12px,2.4vw,13.5px);color:var(--text-sub);margin-top:4px;}
+
+  /* ===== Checklist ===== */
+  .check-box{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);
+    padding:clamp(22px,4.5vw,34px);box-shadow:var(--shadow);
+  }
+  .check-list{list-style:none;display:flex;flex-direction:column;gap:14px;}
+  .check-list li{display:flex;gap:13px;align-items:flex-start;font-size:clamp(14px,2.8vw,16px);font-weight:500;}
+  .check-list .chk{
+    width:26px;height:26px;border-radius:8px;background:var(--blue-soft);flex:none;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .check-list .chk svg{width:15px;height:15px;stroke:var(--blue);stroke-width:3;}
+  .check-list li span small{display:block;color:var(--text-mute);font-weight:400;font-size:.86em;margin-top:2px;}
+
+  /* ===== Table ===== */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);}
+  table{width:100%;border-collapse:collapse;min-width:540px;}
+  th,td{padding:15px 16px;text-align:left;font-size:clamp(13px,2.6vw,15px);vertical-align:top;border-bottom:1px solid var(--line-soft);}
+  thead th{background:#fafbfc;font-weight:800;color:var(--text);white-space:nowrap;border-bottom:1.5px solid var(--line);}
+  tbody tr:last-child td{border-bottom:none;}
+  td .muted{color:var(--blue);font-weight:600;font-size:.9em;}
+  .scroll-hint{font-size:12.5px;color:var(--text-mute);margin-top:8px;padding-left:2px;}
+
+  /* doc list */
+  .doc-cols{display:grid;grid-template-columns:1fr;gap:16px;}
+  .doc-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(20px,4vw,26px);box-shadow:var(--shadow);}
+  .doc-card .tag{display:inline-block;background:var(--blue-soft);color:var(--blue);font-weight:800;font-size:13px;padding:6px 13px;border-radius:999px;margin-bottom:16px;}
+  .doc-card ol{list-style:none;counter-reset:d;display:flex;flex-direction:column;gap:11px;}
+  .doc-card li{counter-increment:d;display:flex;gap:11px;font-size:clamp(13.5px,2.6vw,15px);}
+  .doc-card li::before{content:counter(d);flex:none;width:23px;height:23px;border-radius:50%;background:#f1f2f4;color:var(--text-sub);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .doc-card li b{font-weight:600;}
+  .doc-card li em{display:block;font-style:normal;color:var(--text-mute);font-size:.85em;margin-top:1px;}
+
+  /* ===== FAQ accordion ===== */
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:clamp(18px,3.5vw,22px) clamp(18px,4vw,24px);
+    display:flex;align-items:center;gap:13px;
+    font-family:inherit;font-size:clamp(15px,2.9vw,17px);font-weight:700;color:var(--text);
+    min-height:60px;
+  }
+  .faq-q .qmark{color:var(--blue);font-weight:900;flex:none;}
+  .faq-q .arrow{margin-left:auto;flex:none;transition:transform .3s ease;color:var(--text-mute);}
+  .faq-item.open .arrow{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-a .inner{padding:0 clamp(18px,4vw,24px) clamp(18px,3.5vw,22px) clamp(41px,8vw,50px);color:var(--text-sub);font-size:clamp(14px,2.7vw,15.5px);}
+  .faq-a .inner strong{color:var(--text);font-weight:700;}
+
+  /* ===== Contact ===== */
+  .contact{
+    background:linear-gradient(135deg,#1e2430,#2b3340);border-radius:var(--radius-lg);
+    padding:clamp(26px,5vw,42px);color:#fff;text-align:center;
+  }
+  .contact .tel{font-size:clamp(30px,7vw,48px);font-weight:900;letter-spacing:.02em;margin:10px 0;color:#fff;}
+  .contact h3{font-size:clamp(17px,3.4vw,21px);font-weight:800;}
+  .contact p{color:#b8bdc7;font-size:clamp(13.5px,2.7vw,15px);margin-top:6px;}
+
+  /* mall chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:clamp(13px,2.6vw,14.5px);font-weight:600;color:var(--text);min-height:44px;display:inline-flex;align-items:center;}
+
+  /* footer */
+  footer{text-align:center;padding:36px 18px 50px;color:var(--text-mute);font-size:13px;line-height:1.7;}
+
+  /* ===== Responsive ===== */
+  @media(min-width:640px){
+    .grid-2{grid-template-columns:1fr 1fr;}
+    .doc-cols{grid-template-columns:1fr 1fr;}
+  }
+  @media(min-width:840px){
+    .grid-3{grid-template-columns:1fr 1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===== Instagram (TOP) ===== -->
+  <section style="margin-top:24px;">
+    <div class="ig-band">
+      <div class="txt">
+        <small>놓치면 손해! 청년 정책·지원금</small>
+        <p>더 많은 꿀정보 얻고 싶다면?</p>
+      </div>
+      <a class="ig-btn" href="https://www.instagram.com/startup_tip_" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg>
+        @startup_tip_
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <span class="label">경기도 청년 복지포인트</span>
+    <h1>1년간 <span class="big">최대 120만원</span><br>포인트 지급</h1>
+    <ul>
+      <li>만 19세 이상 ~ 39세 이하 경기도 거주자</li>
+      <li>경기도 소재 중견·중소기업, 소상공인업체, 비영리법인 등 재직자
+        <small>(국가, 지자체, 공공기관, 공기업, 학교법인, 사립학교 등 제외)</small></li>
+      <li>주 36시간 이상 근무, 동일 사업장 6개월 이상 재직</li>
+    </ul>
+    <a class="cta" href="https://youth.jobaba.net/youth/biz/point/check.do?bizSeCd=3&menuSn=200012" target="_blank" rel="noopener">신청 바로가기 →</a>
+  </section>
+
+  <!-- ===== 핵심 요약 카드 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>한눈에 보는 핵심 정보</h2></div>
+    <div class="grid grid-3">
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+        <h3>지원 대상</h3>
+        <p>만 19~39세 경기도 거주 청년 노동자</p>
+      </div>
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h3>지원 금액</h3>
+        <p>1년간 최대 <strong style="color:var(--coral-deep)">120만원</strong> 복지포인트</p>
+      </div>
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 9l6-6 6 6"/></svg></div>
+        <h3>신청 시기</h3>
+        <p>2026년 7월 1차 모집 예정</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 사업 소개 ===== -->
+  <section>
+    <div class="intro">
+      <h2>청년 <span class="accent-blue">복지포인트</span> 사업이란?</h2>
+      <p>중견·중소기업, 소상공인업체, 비영리법인의 청년 노동자에게 <strong>복지포인트를 지급하는 사업</strong>입니다. 경기도가 주관하고 2018년부터 경기도일자리재단이 위탁 운영하고 있습니다.</p>
+      <p>도내 청년의 임금 보전과 복지 지원을 통해 안정적인 근로 환경을 조성하고, 장기 재직을 유도하기 위한 종합 청년 지원 정책입니다. 청년의 복지 체감도와 삶의 만족도를 높이고 일과 삶의 균형을 지원합니다.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="num">19.5만명</div><div class="desc">2018~2025년 누적 지원</div></div>
+        <div class="stat"><div class="num">120만원</div><div class="desc">연간 최대 지원 금액</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 자격요건 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>2026년 자격요건</h2></div>
+    <div class="grid grid-3">
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+        <h3>연령</h3>
+        <p>만 19세 이상 ~ 만 39세 이하 청년 근로자</p>
+        <span class="note">※ 병역의무이행 기간만큼 연령 연장 (최고 3년)</span>
+      </div>
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.7-7-11a7 7 0 0114 0c0 5.3-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>거주지</h3>
+        <p>경기도<br><span style="color:var(--text-mute);font-size:.92em">(주민등록상 거주지)</span></p>
+      </div>
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+        <h3>기준소득</h3>
+        <p>6개월 평균 건강보험료 138,276원<br><span style="color:var(--text-mute);font-size:.92em">(월 급여 385만원) 이하</span></p>
+      </div>
+    </div>
+    <div class="card fcard" style="margin-top:16px;">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
+      <div class="body">
+        <h3>근무조건</h3>
+        <p>경기도 소재 중견·중소기업, 소상공인업체, 비영리법인 재직자 중 <strong style="color:var(--text)">주 36시간 이상 근로자</strong> (단, 비영리법인 중 국가·지방자치단체, 공공기관, 학교법인 또는 사립학교로서 국가·지자체로부터 출연금 또는 보조금을 받는 기관 등 제외)</p>
+        <span class="note">※ 4대 사회보험 미가입자 신청 가능</span>
+        <span class="note">※ [중복참여가능] 내일채움공제, 청년재직자내일채움공제, 청년내일채움공제 참여자도 신청 가능</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 선정요건 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>2026년 선정요건</h2></div>
+    <p class="sec-sub">※ 4대 사회보험 미가입자의 경우, 6개월 평균 급여에 건강보험요율을 적용하여 4대 사회보험 가입자와 함께 선발</p>
+    <div class="grid grid-2" style="margin-bottom:18px;">
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+        <h3 style="font-size:16px">1단계</h3>
+        <p>자격요건을 충족한 신청자<br>종합평가 후 선발</p>
+      </div>
+      <div class="card center">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/><path d="M16 12l2 2 3-3" stroke="var(--blue)"/></svg></div>
+        <h3 style="font-size:16px">2단계</h3>
+        <p>6개월 평균 건강보험료가<br>낮은 순으로 선발</p>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>구분</th><th>선발기준</th><th>제출서류</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><b>건강보험료</b></td>
+            <td>· 6개월 평균<br>· 건강보험료 낮은 순으로 선발</td>
+            <td>· 건강보험료 납부확인서<br>· 개인별 건강보험료 산출내역</td>
+          </tr>
+          <tr>
+            <td><b>동점자<br>처리기준</b></td>
+            <td colspan="2">① 건강보험료 낮은 금액 순<br>② 현 직장 장기재직자 순<br>③ 경기도 장기거주자 순으로 결정</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scroll-hint">← 표가 잘리면 좌우로 스크롤하세요</p>
+  </section>
+
+  <!-- ===== 지원 내용 / 청년몰 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>무엇을 지원하나요?</h2></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>💰 지원 내용</h3>
+        <p>선정 또는 자격조건 유지 검증 후 <strong style="color:var(--coral-deep)">연 120만원</strong>의 복지포인트를 지급합니다.</p>
+      </div>
+      <div class="card">
+        <h3>📦 지급 방법</h3>
+        <p>참여자의 <strong>경기청년몰 계정</strong>에 지원금을 지급합니다.</p>
+        <span class="note">※ 경기청년몰(폐쇄몰) 내에서만 사용 가능</span>
+      </div>
+    </div>
+
+    <div class="intro" style="margin-top:16px;">
+      <h2 style="font-size:clamp(18px,3.8vw,24px)">경기 <span class="accent-blue">청년몰</span>이란?</h2>
+      <p>경기도가 청년 복지포인트 사업 참여자를 위해 운영하는 <strong>전용 온라인 복지몰</strong>입니다. 지급받은 포인트로 건강, 교육, 문화, 여행, 생활, 자기계발 등 필요한 상품과 서비스를 편리하게 구매할 수 있습니다.</p>
+      <div class="chips">
+        <span class="chip">🏥 건강관리상품</span>
+        <span class="chip">📚 자기계발</span>
+        <span class="chip">👨‍👩‍👧 가족친화</span>
+        <span class="chip">🎬 문화여가</span>
+        <span class="chip">✈️ 여행레저</span>
+        <span class="chip">🛒 생활편의</span>
+        <span class="chip">🎁 복지몰</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 제출서류 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>2026년 제출서류</h2></div>
+    <div class="doc-cols">
+      <div class="doc-card">
+        <span class="tag">4대 사회보험 가입자</span>
+        <ol>
+          <li><b>신청서</b><em>신청화면에서 작성</em></li>
+          <li><b>개인정보제공동의서</b></li>
+          <li><b>청년 복지포인트 근무확인서</b><em>다운로드 · 사업주 날인 필요</em></li>
+          <li><b>주민등록표 초본</b><em>정부24 (주소변동 최근 5년·병역사항 포함)</em></li>
+          <li><b>사업자등록증 사본</b><em>근무처</em></li>
+          <li><b>4대 사회보험 가입내역확인서</b><em>4대사회보험 정보연계센터</em></li>
+          <li><b>건강보험료 납부확인서(6개월)</b><em>국민건강보험공단</em></li>
+          <li><b>직장가입자 보험료 개인별 상세내역</b></li>
+        </ol>
+      </div>
+      <div class="doc-card">
+        <span class="tag">4대 사회보험 미가입자</span>
+        <ol>
+          <li><b>신청서</b><em>신청화면에서 작성</em></li>
+          <li><b>개인정보제공동의서</b></li>
+          <li><b>주민등록표 초본</b><em>정부24 (주소변동 최근 5년·병역사항 포함)</em></li>
+          <li><b>사업자등록증 사본</b><em>근무처</em></li>
+          <li><b>고용임금확인서</b><em>다운로드 · 사업주 날인 필요</em></li>
+          <li><b>근로계약서 사본</b></li>
+          <li><b>통장 사본 및 급여 입금내역</b><em>6개월 급여 입금내역 확인</em></li>
+          <li><b>고용보험 자격이력내역서(근로자용)</b><em>정부24</em></li>
+          <li><b>건강보험 자격득실 확인서</b><em>정부24</em></li>
+        </ol>
+      </div>
+    </div>
+    <p class="scroll-hint">※ 상기 제출서류는 모집 시 변경될 수 있습니다. (자세한 사항은 모집공고문 참조)</p>
+  </section>
+
+  <!-- ===== 신청 체크리스트 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>신청 전 체크리스트</h2></div>
+    <div class="check-box">
+      <ul class="check-list">
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>만 19세 이상 ~ 39세 이하 경기도 거주 청년인가요?<small>병역의무 이행 시 최고 3년까지 연령 연장</small></span>
+        </li>
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>경기도 소재 중견·중소기업·소상공인·비영리법인 재직자인가요?</span>
+        </li>
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>주 36시간 이상 근무하고 있나요?</span>
+        </li>
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>6개월 평균 건강보험료 138,276원(월 급여 385만원) 이하인가요?</span>
+        </li>
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>제출서류를 가입자/미가입자 유형에 맞게 준비했나요?</span>
+        </li>
+        <li>
+          <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          <span>모집 공고문과 신청 매뉴얼을 확인했나요?</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 신청 안내 ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>신청 안내</h2></div>
+    <div class="grid grid-3">
+      <div class="card"><h3>📅 신청기간</h3><p>1차: 2026년 7월 참여자 모집 예정<br><span style="color:var(--text-mute);font-size:.9em">※ 일정은 추후 변경될 수 있음</span></p></div>
+      <div class="card"><h3>👥 모집규모</h3><p>모집공고 참고</p></div>
+      <div class="card"><h3>💻 신청방법</h3><p>온라인 접수<br><span style="color:var(--blue);font-weight:600">youth.jobaba.net</span></p></div>
+    </div>
+    <div class="card" style="margin-top:16px;background:#fffaf3;border-color:#ffe2c4;">
+      <h3 style="color:var(--orange)">📌 읽어보세요</h3>
+      <p style="margin-top:6px">· 신청은 ‘홈페이지 &gt; 참여접수 &gt; 청년복지포인트’ 메뉴에서 결과보기 확인 후 가능합니다.<br>
+      · 필요시 추가서류가 포함될 수 있으니 공고문·유의사항·신청 매뉴얼을 반드시 확인하세요.<br>
+      · 입력 정보나 증빙자료가 부정확하거나 확인이 불가능하면 선정에서 제외되니 정확히 입력해 주세요.</p>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a class="cta" style="background:var(--blue);color:#fff;display:inline-flex;align-items:center;gap:8px;padding:16px 40px;border-radius:999px;font-weight:800;text-decoration:none;min-height:56px;box-shadow:0 6px 18px rgba(37,99,235,.25);" href="https://youth.jobaba.net/youth/biz/point/check.do?bizSeCd=3&menuSn=200012" target="_blank" rel="noopener">접수하기 →</a>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>자주 묻는 질문 (FAQ)</h2></div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 얼마를 받을 수 있나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner">선정 또는 자격조건 유지 검증 후 <strong>1년간 최대 120만원</strong>의 복지포인트를 받을 수 있습니다. 포인트는 참여자의 경기청년몰 계정으로 지급됩니다.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 4대 보험에 가입되어 있지 않아도 신청할 수 있나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner"><strong>네, 신청 가능합니다.</strong> 4대 사회보험 미가입자의 경우 6개월 평균 급여에 건강보험요율을 적용하여 가입자와 함께 선발합니다. 다만 제출서류(고용임금확인서, 근로계약서, 급여 입금내역 등)가 가입자와 다르니 유형에 맞게 준비하세요.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 내일채움공제에 참여 중인데 중복 신청이 되나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner">가능합니다. <strong>내일채움공제, 청년재직자내일채움공제, 청년내일채움공제</strong> 사업 참여자도 청년 복지포인트를 신청할 수 있습니다.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 포인트는 어디서 사용하나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner">경기도가 운영하는 전용 온라인 복지몰인 <strong>경기청년몰(폐쇄몰)</strong> 내에서만 사용할 수 있습니다. 건강관리, 자기계발, 가족친화, 문화여가, 여행레저, 생활편의 등 다양한 카테고리에서 구매 가능합니다.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 동점이면 어떤 기준으로 선발되나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner">① 건강보험료 낮은 금액 순 → ② 현 직장 장기재직자 순 → ③ 경기도 장기거주자 순으로 결정됩니다.</div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q"><span class="qmark">Q</span> 언제, 어떻게 신청하나요? <span class="arrow">▾</span></button>
+      <div class="faq-a"><div class="inner">1차 모집은 <strong>2026년 7월</strong>에 예정되어 있으며, 온라인(youth.jobaba.net)으로 접수합니다. 구체적인 일정과 모집 규모는 차수별 모집 공고를 참고하세요.</div></div>
+    </div>
+  </section>
+
+  <!-- ===== 문의 ===== -->
+  <section>
+    <div class="contact">
+      <h3>청년 노동자 지원사업 콜센터</h3>
+      <div class="tel">1577-0014</div>
+      <p>평일 09:00 ~ 18:00 (점심시간 13:00 ~ 14:00 제외)</p>
+      <p style="margin-top:10px;">신청 관련 문의나 어려움이 있을 때 상담받을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== Instagram (BOTTOM) ===== -->
+  <section>
+    <div class="ig-band">
+      <div class="txt">
+        <small>놓치면 손해! 청년 정책·지원금</small>
+        <p>더 많은 꿀정보 얻고 싶다면?</p>
+      </div>
+      <a class="ig-btn" href="https://www.instagram.com/startup_tip_" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg>
+        @startup_tip_
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    본 페이지는 경기도 청년 복지포인트 사업 정보를 정리한 안내용입니다.<br>
+    정확한 자격·일정·서류는 반드시 공식 모집공고문(youth.jobaba.net)을 확인하세요.
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.parentElement;
+      var ans = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(function(it){
+        it.classList.remove('open');
+        it.querySelector('.faq-a').style.maxHeight = null;
+      });
+      // open clicked one
+      if(!isOpen){
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
